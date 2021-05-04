@@ -15,6 +15,7 @@ public class SwerveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    //Wheel(name);        //TODO name wheels
   }
 
   @Override
@@ -23,4 +24,20 @@ public class SwerveSubsystem extends SubsystemBase {
   }
 
   public void setDrivePowers() {} // TODO
+
+  public void Wheel (String name){ //Contructor to create the wheels of the robot
+    //set Talon SRX and Spark Max for each wheel
+    //set encoder/ticks 
+    //set speed
+    //set starting position
+    //swerve status
+  }
+
+  public double calculatePID(double startingPos, targetPos){
+    //take starting position and calculate how much to turn to target position (reverse direction of wheel if needed)
+    //return how much to turn AND if the direction of the wheel needs to be reversed
+
+  }
 }
+
+  

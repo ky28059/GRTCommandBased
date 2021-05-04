@@ -7,8 +7,13 @@ package frc.robot.commands.swerve;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.SwerveSubsystem;
 
+
 /** An example command that uses an example subsystem. */
 public class DriveSwerveCommand extends CommandBase {
+  public double targetPos;
+  public double currentPos;
+
+
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final SwerveSubsystem swerveSubsystem;
 
@@ -33,4 +38,23 @@ public class DriveSwerveCommand extends CommandBase {
   public boolean isFinished() {
     return true;
   }
+
+  public void Drive (){ //not yet called
+    //recieve data to turn wheels and change speed from swerve subsystem
+
+  }
+  public XboxController(double joystickInp){
+    //take input from one joystick for speed
+    //take input from the other joystick for direction
+    //profile these values
+    //use these profiled values to set target value and target speed
+    //send targetpos values to the swervesubsystem
+    //send targetspeed value to swervesubsystem                                  
+  }
+
+  private JoystickProfile(){ 
+    //cut out deadband and send the numbers to XboxController                      
+
+  }
+
 }
