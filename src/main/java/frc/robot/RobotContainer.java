@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.ExampleAutoCommand;
+import frc.robot.commands.swerve.DriveSwerveCommand;
 import frc.robot.subsystems.SwerveSubsystem;
 
 /**
@@ -20,8 +21,10 @@ import frc.robot.subsystems.SwerveSubsystem;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
+  
+  private final DriveSwerveCommand driveSwerveCommand = new DriveSwerveCommand(swerveSubsystem);
 
-  private final ExampleAutoCommand autoCommand = new ExampleAutoCommand(swerveSubsystem);
+  private final ExampleAutoCommand autoCommand = new ExampleAutoCommand(swerveSubsystem); 
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -29,6 +32,10 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    swerveSubsystem.setDefaultCommand(driveSwerveCommand);  //setting driveSwerveCommand as default command
+
+
+
   }
 
   /**

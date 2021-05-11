@@ -6,6 +6,8 @@ package frc.robot.commands.swerve;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.input.Controllers;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 
 /** An example command that uses an example subsystem. */
@@ -26,35 +28,34 @@ public class DriveSwerveCommand extends CommandBase {
     this.swerveSubsystem = swerveSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(swerveSubsystem);
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void initialize() {
-    swerveSubsystem.setDrivePowers(); // TODO: add parameters whenever the method is fixed
-  }
+  public void initialize() {}  //intentionally left empty because we don't need to initialize anything
 
   @Override
   public boolean isFinished() {
     return true;
   }
 
-  public void Drive (){ //not yet called
-    //recieve data to turn wheels and change speed from swerve subsystem
+  @Override
+  public void execute() {
+    double vX = Controllers.SWERVE_XBOX.getX(Hand.kLeft); //taking input from controllers x velocity
+    double vY = Controllers.SWERVE_XBOX.getY(Hand.kLeft);
+    double vAng = Controllers.SWERVE_XBOX.getTriggerAxis(Hand.kRight) - Controllers.SWERVE_XBOX.getTriggerAxis(Hand.kLeft);  //subtracting trigger to see which way to turn
+    vX = JoystickProfile.applyProfile(vX);
+    vY = JoystickProfile.applyProfile(vY);
+    vAng = JoystickProfile.applyProfile(vAng);
+    swerveSubsystem.set(vX, vY, vAng);
+  
+
+
+
 
   }
-  public XboxController(double joystickInp){
-    //take input from one joystick for speed
-    //take input from the other joystick for direction
-    //profile these values
-    //use these profiled values to set target value and target speed
-    //send targetpos values to the swervesubsystem
-    //send targetspeed value to swervesubsystem                                  
-  }
 
-  private JoystickProfile(){ 
-    //cut out deadband and send the numbers to XboxController                      
 
-  }
 
 }
