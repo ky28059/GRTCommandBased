@@ -1,6 +1,6 @@
 package frc.input;
-import edu.wpi.first.wpilibj.XboxController;
 
+import edu.wpi.first.wpilibj.XboxController;
 
 /** This class contains the controllers used for input */
 public class Controllers {

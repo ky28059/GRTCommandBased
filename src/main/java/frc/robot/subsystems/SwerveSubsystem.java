@@ -6,7 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.sensors;
+import frc.robot.sensors.NavXGyro;
 
 public class SwerveSubsystem extends SubsystemBase {
   private static final double LENGTH = 22.25;
@@ -22,8 +22,6 @@ public class SwerveSubsystem extends SubsystemBase {
     wheels[2] = new SwerveModuleSubsystem("br", WIDTH/2, -LENGTH/2);
     wheels[3] = new SwerveModuleSubsystem("bl", -WIDTH/2, -LENGTH/2);
     gyro = new NavXGyro();
-
-
   }
 
   @Override

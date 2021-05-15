@@ -1,4 +1,4 @@
-package frc.control.input;
+package frc.input;
 
 import frc.util.GRTUtil;
 
