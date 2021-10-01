@@ -5,6 +5,7 @@
 package frc.robot.subsystems.tank;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -21,6 +22,7 @@ public class TankSubsystem extends SubsystemBase {
   public TankSubsystem(int fLeftId, int bLeftId, int fRightId, int bRightId) {
     super();
 
+    // Configure motors
     leftMain = new TalonSRX(fLeftId);
     leftMain.setNeutralMode(NeutralMode.Brake);
     
@@ -38,12 +40,27 @@ public class TankSubsystem extends SubsystemBase {
     rightFollow.follow(rightMain);
     rightFollow.setInverted(InvertType.FollowMaster);
     rightFollow.setNeutralMode(NeutralMode.Brake);
+
+
+    // Configure sensors
+    leftMain.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    rightMain.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+
+    // sensor opposite of motor?
+    leftMain.setSensorPhase(false);
+    rightMain.setSensorPhase(false);
+
+    // reset position
+    leftMain.setSelectedSensorPosition(0);
+    rightMain.setSelectedSensorPosition(0);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     // TODO: odometry
+    System.out.println("Left position: " + leftMain.getSelectedSensorPosition());
+    System.out.println("Right position: " + rightMain.getSelectedSensorPosition());
   }
 
   @Override
