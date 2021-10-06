@@ -5,8 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.swerve.FollowPathCommand;
-import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.ExampleMech;
 
 /** An example command that uses an example subsystem. */
 public class ExampleAutoCommand extends SequentialCommandGroup {
@@ -15,10 +14,10 @@ public class ExampleAutoCommand extends SequentialCommandGroup {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleAutoCommand(SwerveSubsystem swerveSubsystem) {
-    addCommands(new FollowPathCommand(swerveSubsystem),
+  public ExampleAutoCommand(ExampleMech examplemech) {
+    addCommands(new ExampleAutoCommand(examplemech),
         // do something quirky here
-        new FollowPathCommand(swerveSubsystem) // follow another path
+        new ExampleAutoCommand(examplemech) // follow another path
     // maybe do something else quirky
     );
   }

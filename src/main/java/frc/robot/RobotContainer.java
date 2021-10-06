@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.ExampleAutoCommand;
-import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.ExampleMech;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -19,15 +19,22 @@ import frc.robot.subsystems.SwerveSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
+  private final ExampleMech examplemech = new ExampleMech();
 
-  private final ExampleAutoCommand autoCommand = new ExampleAutoCommand(swerveSubsystem);
+
+  //TODO add all mechs
+//TODO move everything to auton if were running it on auton. which we probably are, so 
+//make a default command that doesnt do anything. :)
+
+  private final ExampleAutoCommand autoCommand = new ExampleAutoCommand(examplemech);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
+
+    //TODO get rid of old robot stuff
     configureButtonBindings();
   }
 
