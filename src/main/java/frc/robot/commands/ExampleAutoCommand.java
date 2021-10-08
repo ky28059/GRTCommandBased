@@ -14,11 +14,11 @@ public class ExampleAutoCommand extends SequentialCommandGroup {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleAutoCommand(ExampleMech examplemech) {
-    addCommands(new ExampleAutoCommand(examplemech),
-        // do something quirky here
-        new ExampleAutoCommand(examplemech) // follow another path
-    // maybe do something else quirky
-    );
+  public ExampleAutoCommand() {
+    // addCommands(new ExampleAutoCommand(examplemech),
+    //     // do something quirky here
+    //     new ExampleAutoCommand(examplemech) // follow another path
+    // // maybe do something else quirky
+    // );
   }
 }

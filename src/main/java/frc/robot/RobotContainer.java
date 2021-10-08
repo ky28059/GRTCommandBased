@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.ExampleAutoCommand;
 import frc.robot.subsystems.ExampleMech;
+import frc.robot.subsystems.IntervalSolenoid;
+import frc.robot.subsystems.solenoids.MotorControllerSolenoid;
+import frc.robot.subsystems.solenoids.PCMSolenoid;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -19,22 +22,21 @@ import frc.robot.subsystems.ExampleMech;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleMech examplemech = new ExampleMech();
+  private final IntervalSolenoid examplePCMSolenoid = new IntervalSolenoid(
+    new PCMSolenoid(1), 0, 3, 2
+  );
+  
+  private final IntervalSolenoid exampleMotorSolenoid = new IntervalSolenoid(
+    new MotorControllerSolenoid(0), 0, 4, 2
+  );
 
-
-  //TODO add all mechs
-//TODO move everything to auton if were running it on auton. which we probably are, so 
-//make a default command that doesnt do anything. :)
-
-  private final ExampleAutoCommand autoCommand = new ExampleAutoCommand(examplemech);
+  private final ExampleAutoCommand autoCommand = new ExampleAutoCommand();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
-
-    //TODO get rid of old robot stuff
     configureButtonBindings();
   }
 
