@@ -22,13 +22,14 @@ import frc.robot.subsystems.solenoids.PCMSolenoid;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final IntervalSolenoid examplePCMSolenoid = new IntervalSolenoid(
-    new PCMSolenoid(1), 0, 3, 2
-  );
-  
-  private final IntervalSolenoid exampleMotorSolenoid = new IntervalSolenoid(
-    new MotorControllerSolenoid(0), 0, 4, 2
-  );
+  private final IntervalSolenoid tylerMech = new IntervalSolenoid(
+    new PCMSolenoid(1), 0, 20, 5);
+
+  private final IntervalSolenoid ethanMech = new IntervalSolenoid(
+    new PCMSolenoid(2), 0, 10, 5);
+
+  private final IntervalSolenoid roshelleMech = new IntervalSolenoid(
+    new MotorControllerSolenoid(0), 0, 10, 5);
 
   private final ExampleAutoCommand autoCommand = new ExampleAutoCommand();
 

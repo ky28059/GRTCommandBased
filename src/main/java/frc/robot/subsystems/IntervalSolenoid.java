@@ -8,7 +8,7 @@ import frc.robot.subsystems.solenoids.SolenoidGroup;
 public class IntervalSolenoid extends SubsystemBase {
     SolenoidGroup solenoids;
 
-    int period;
+    int maxPeriod, minPeriod;
     int startupDelay;
     int holdDuration;
 
@@ -19,11 +19,15 @@ public class IntervalSolenoid extends SubsystemBase {
 
     boolean extended;
 
+    int nextPeriod;
+
     public IntervalSolenoid(SolenoidGroup solenoids, 
-            int startupDelay, int period, int holdDuration) {
+            int startupDelay, int maxPeriod, int minPeriod, int holdDuration) {
         CommandScheduler.getInstance().registerSubsystem(this);
 
-        this.period = period;
+        this.maxPeriod = maxPeriod;
+        this.minPeriod = minPeriod;
+
         this.startupDelay = startupDelay;
         this.holdDuration = holdDuration;
 
@@ -36,6 +40,13 @@ public class IntervalSolenoid extends SubsystemBase {
 
         this.extended = false;
         this.solenoids.set(extended);
+
+        this.nextPeriod = determineNextPeriod();
+    }
+
+    public IntervalSolenoid(SolenoidGroup solenoids,
+            int startupDelay, int period, int holdDuration) {
+        this(solenoids, startupDelay, period, period, holdDuration);
     }
 
     public void periodic() {
@@ -56,14 +67,22 @@ public class IntervalSolenoid extends SubsystemBase {
                 solenoids.set(false);
                 timer.reset();
                 
-                System.out.println("setting");
-            } else if (!extended && timer.hasElapsed(period)) {
+                nextPeriod = determineNextPeriod();
+            } else if (!extended && timer.hasElapsed(nextPeriod)) {
                 extended = true;
                 solenoids.set(true);
                 timer.reset();
-
-                System.out.println("setting");
             }
+        }
+    }
+
+    private int determineNextPeriod() {
+        if (this.minPeriod == this.maxPeriod) {
+            return minPeriod;
+        } else {
+            int range = maxPeriod - minPeriod;
+
+            return minPeriod + ((int) (Math.random() * range));
         }
     }
 }
