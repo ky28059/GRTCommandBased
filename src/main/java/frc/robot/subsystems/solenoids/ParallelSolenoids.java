@@ -1,6 +1,6 @@
 package frc.robot.subsystems.solenoids;
 
-public class ParallelSolenoids {
+public class ParallelSolenoids implements SolenoidGroup {
     SolenoidGroup[] solenoids;
 
     public ParallelSolenoids(SolenoidGroup... solenoids) {
