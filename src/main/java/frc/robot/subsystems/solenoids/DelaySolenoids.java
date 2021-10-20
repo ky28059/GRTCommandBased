@@ -31,7 +31,9 @@ public class DelaySolenoids implements SolenoidGroup {
 
             first.set(target);
         }
+    }
 
+    public void update() {
         if (timer.hasElapsed(this.delay)) {
             second.set(target);
         }
