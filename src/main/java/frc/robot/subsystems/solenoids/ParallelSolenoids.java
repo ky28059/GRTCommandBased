@@ -12,4 +12,10 @@ public class ParallelSolenoids implements SolenoidGroup {
             solenoid.set(extended);
         }
     }
+
+    public void update() {
+        for (SolenoidGroup solenoid : solenoids) {
+            solenoid.update();
+        }
+    }
 }

@@ -13,6 +13,7 @@ import frc.robot.subsystems.solenoids.DelaySolenoids;
 import frc.robot.subsystems.solenoids.MotorControllerSolenoid;
 import frc.robot.subsystems.solenoids.PCMSolenoid;
 import frc.robot.subsystems.solenoids.ParallelSolenoids;
+import frc.robot.subsystems.solenoids.RepeaterSolenoids;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -38,7 +39,7 @@ public class RobotContainer {
   private final IntervalSolenoid lucyMech = new IntervalSolenoid(new MotorControllerSolenoid(3), 0, 7, 20);
 
   private final IntervalSolenoid aarushMech = new IntervalSolenoid(
-      new ParallelSolenoids(new PCMSolenoid(0), new PCMSolenoid(1)), 0, 30, 12);
+      new ParallelSolenoids(new PCMSolenoid(0), new RepeaterSolenoids(new PCMSolenoid(1), 3)), 0, 30, 12);
 
   private final ExampleAutoCommand autoCommand = new ExampleAutoCommand();
 
