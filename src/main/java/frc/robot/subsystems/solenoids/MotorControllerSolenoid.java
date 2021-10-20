@@ -6,8 +6,13 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class MotorControllerSolenoid implements SolenoidGroup {
     TalonSRX motorController;
 
-    public MotorControllerSolenoid(int canID) {
+    public MotorControllerSolenoid(int canID, boolean reverse) {
         this.motorController = new TalonSRX(canID);
+        this.motorController.setInverted(!reverse);
+    }
+
+    public MotorControllerSolenoid(int canID) {
+        this(canID, false);
     }
 
     @Override

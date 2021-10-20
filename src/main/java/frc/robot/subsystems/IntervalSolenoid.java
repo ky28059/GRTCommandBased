@@ -74,6 +74,8 @@ public class IntervalSolenoid extends SubsystemBase {
                 timer.reset();
             }
         }
+
+        solenoids.update();
     }
 
     private int determineNextPeriod() {

@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.ExampleAutoCommand;
-import frc.robot.subsystems.ExampleMech;
 import frc.robot.subsystems.IntervalSolenoid;
+import frc.robot.subsystems.solenoids.DelaySolenoids;
 import frc.robot.subsystems.solenoids.MotorControllerSolenoid;
 import frc.robot.subsystems.solenoids.PCMSolenoid;
 import frc.robot.subsystems.solenoids.ParallelSolenoids;
@@ -23,26 +23,22 @@ import frc.robot.subsystems.solenoids.ParallelSolenoids;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final IntervalSolenoid tylerMech = new IntervalSolenoid(
-    new MotorControllerSolenoid(0), 0, 20, 5);
+  private final IntervalSolenoid tylerMech = new IntervalSolenoid(new MotorControllerSolenoid(0), 0, 20, 5);
 
-  private final IntervalSolenoid ethanMech = new IntervalSolenoid(
-    new MotorControllerSolenoid(1), 0, 10, 5);
+  private final IntervalSolenoid ethanMech = new IntervalSolenoid(new MotorControllerSolenoid(1), 0, 10, 5);
 
-  private final IntervalSolenoid roMech = new IntervalSolenoid(
-    new MotorControllerSolenoid(2), 0, 10, 5);
+  private final IntervalSolenoid roMech = new IntervalSolenoid(new MotorControllerSolenoid(2), 0, 10, 5);
 
   private final IntervalSolenoid mattyMech = new IntervalSolenoid(
-    new ParallelSolenoids(new MotorControllerSolenoid(12), new MotorControllerSolenoid(13)),0, 8, 5);
+      new DelaySolenoids(new MotorControllerSolenoid(12), new MotorControllerSolenoid(13), 1), 0, 8, 5);
 
   private final IntervalSolenoid alexMech = new IntervalSolenoid(
-    new ParallelSolenoids(new MotorControllerSolenoid(14), new MotorControllerSolenoid(15)),0, 20,4);
+      new ParallelSolenoids(new MotorControllerSolenoid(14), new MotorControllerSolenoid(15)), 0, 20, 4);
 
-  private final IntervalSolenoid lucyMech = new IntervalSolenoid(
-    new MotorControllerSolenoid(3), 0,7,20);
+  private final IntervalSolenoid lucyMech = new IntervalSolenoid(new MotorControllerSolenoid(3), 0, 7, 20);
 
   private final IntervalSolenoid aarushMech = new IntervalSolenoid(
-    new ParallelSolenoids(new PCMSolenoid(0), new PCMSolenoid(1)),0,30,12);
+      new ParallelSolenoids(new PCMSolenoid(0), new PCMSolenoid(1)), 0, 30, 12);
 
   private final ExampleAutoCommand autoCommand = new ExampleAutoCommand();
 

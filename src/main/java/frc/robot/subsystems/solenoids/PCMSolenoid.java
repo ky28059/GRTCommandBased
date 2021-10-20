@@ -4,13 +4,19 @@ import edu.wpi.first.wpilibj.Solenoid;
 
 public class PCMSolenoid implements SolenoidGroup {
     Solenoid solenoid;
+    boolean reverse;
+
+    public PCMSolenoid(int pcmChannel, boolean reverse) {
+        this.solenoid = new Solenoid(pcmChannel);
+        this.reverse = reverse;
+    }
 
     public PCMSolenoid(int pcmChannel) {
-        this.solenoid = new Solenoid(pcmChannel);
+        this(pcmChannel, false);
     }
 
     @Override
     public void set(boolean extended) {
-        solenoid.set(extended);
+        solenoid.set(reverse ? extended : !extended);
     }
 }
