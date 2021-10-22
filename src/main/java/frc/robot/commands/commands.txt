@@ -1,0 +1,3 @@
+forward 3s
+turn 30
+forward 2m
