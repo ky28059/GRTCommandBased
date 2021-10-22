@@ -9,28 +9,28 @@ import frc.robot.subsystems.SwerveSubsystem;
 
 /** An example command that uses an example subsystem. */
 public class DriveSwerveCommand extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private final SwerveSubsystem swerveSubsystem;
+    @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
+    private final SwerveSubsystem swerveSubsystem;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param swerveSubsystem The subsystem used by this command.
-   */
-  public DriveSwerveCommand(SwerveSubsystem swerveSubsystem) { // TODO: add parameters whenever swerveSubsystem.setDrivePowers() is finished.
-    this.swerveSubsystem = swerveSubsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(swerveSubsystem);
-  }
+    /**
+     * Creates a new ExampleCommand.
+     *
+     * @param swerveSubsystem The subsystem used by this command.
+     */
+    public DriveSwerveCommand(SwerveSubsystem swerveSubsystem) { // TODO: add parameters whenever swerveSubsystem.setDrivePowers() is finished.
+        this.swerveSubsystem = swerveSubsystem;
+        // Use addRequirements() here to declare subsystem dependencies.
+        addRequirements(swerveSubsystem);
+    }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void initialize() {
-    swerveSubsystem.setDrivePowers(); // TODO: add parameters whenever the method is fixed
-  }
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void initialize() {
+        swerveSubsystem.setDrivePowers(); // TODO: add parameters whenever the method is fixed
+    }
 
-  @Override
-  public boolean isFinished() {
-    return true;
-  }
+    @Override
+    public boolean isFinished() {
+        return true;
+    }
 }
