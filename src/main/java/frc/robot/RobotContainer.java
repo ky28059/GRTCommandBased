@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import frc.robot.commands.tank.DriveTankCommand;
 import frc.robot.commands.elevator.ElevatorUpCommand;
+import frc.robot.commands.FollowInstructionsFromFileCommand;
 import frc.robot.commands.elevator.ElevatorDownCommand;
 import frc.robot.commands.elevator.ElevatorStopCommand;
 import frc.robot.subsystems.elevator.ElevatorSubsystem;
@@ -43,7 +44,7 @@ public class RobotContainer {
     private XboxController controlXbox = new XboxController(0);
 
     // Commands
-    private final DriveTankCommand tankCommand;
+    private final FollowInstructionsFromFileCommand fileCommand;
 
     // Helper field variables
     Properties config;
@@ -73,10 +74,10 @@ public class RobotContainer {
                 Integer.parseInt(config.getProperty("elevator_follower")));
 
         // Instantiate commands
-        tankCommand = new DriveTankCommand(tankSubsystem, 0, 0);
-
+        fileCommand = new FollowInstructionsFromFileCommand(tankSubsystem);
+        
         // Configure the button bindings
-        configureButtonBindings();
+        //configureButtonBindings();
     }
 
     /**
@@ -85,15 +86,18 @@ public class RobotContainer {
      * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then
      * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
+    /*
     private void configureButtonBindings() {
         controllerBindings();
     }
+    */
 
+    /*
     private void controllerBindings() {
         /**
          * tankSubsystem.setDefaultCommand(new RunCommand(() -> {
          * tankSubsystem.setDrivePowers(); // TODO }, tankSubsystem));
-         */
+         /
 
         // controlXbox.
 
@@ -117,6 +121,7 @@ public class RobotContainer {
         // elevatorSubsystem.setDefaultCommand(new
         // ElevatorStopCommand(elevatorSubsystem));
     }
+    */
 
     /**
      * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -124,7 +129,7 @@ public class RobotContainer {
      * @return the command to run in autonomous
      */
     public Command getAutonomousCommand() {
-        // An ExampleCommand will run in autonomous
-        return tankCommand;
+        // Run the FollowInstructionsFromFileCommand in autonomous
+        return fileCommand;
     }
 }
