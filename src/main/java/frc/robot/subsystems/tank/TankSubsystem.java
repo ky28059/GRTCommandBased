@@ -86,7 +86,22 @@ public class TankSubsystem extends SubsystemBase {
         rightMain.set(ControlMode.PercentOutput, rightPower);
     }
 
-    public void followPathCommand() {
+    // Get displacement of the left Talon quadrature sensor
+    // TODO: what units are these in?
+    public int getLeftDisplacement() {
+        return leftMain.getSensorCollection().getQuadraturePosition();
+    }
+    // Get displacement of the right Talon quadrature sensor
+    public int getRightDisplacement() {
+        return rightMain.getSensorCollection().getQuadraturePosition();
+    }
 
+    // Set displacement of the left Talon quadrature sensor
+    public void setLeftDisplacement(int pos) {
+        leftMain.getSensorCollection().setQuadraturePosition(pos, 0);
+    }
+    // Set displacement of the right Talon quadrature sensor
+    public void setRightDisplacement(int pos) {
+        rightMain.getSensorCollection().setQuadraturePosition(pos, 0);
     }
 }

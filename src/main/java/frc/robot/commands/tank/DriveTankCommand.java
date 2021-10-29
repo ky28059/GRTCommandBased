@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.tank.TankSubsystem;
 
 /**
- * An example command that uses an example subsystem.
+ * A command to drive the Tank subsystem
  */
 public class DriveTankCommand extends CommandBase {
     @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
