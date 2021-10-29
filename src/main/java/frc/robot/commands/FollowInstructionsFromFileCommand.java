@@ -7,6 +7,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.tank.DriveTankCommand;
+import frc.robot.commands.tank.DriveTankForDistanceCommand;
+import frc.robot.commands.tank.DriveTankForTimeoutCommand;
 import frc.robot.subsystems.tank.TankSubsystem;
 
 import java.io.BufferedReader;
@@ -56,15 +58,10 @@ public class FollowInstructionsFromFileCommand extends SequentialCommandGroup {
             } else { // Move command
                 int num = Integer.parseInt(args[1].substring(0, args[1].length() - 1));
 
-                //if (args[1].endsWith("m")) 
-
-                //addCommands(new DriveTankCommand(tankSubsystem, yScale, 0));
+                addCommands(args[1].endsWith("s")
+                    ? new DriveTankForTimeoutCommand(tankSubsystem, num, 1, 0) // Drive at max speed for num seconds
+                    : new DriveTankForDistanceCommand(tankSubsystem, num, 1, 0)); // Drive at max speed for num meters
             }
         });
-
-        addCommands(
-            // do something quirky here
-            // maybe do something else quirky
-        );
     }
 }

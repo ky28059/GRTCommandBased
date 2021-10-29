@@ -104,4 +104,8 @@ public class TankSubsystem extends SubsystemBase {
     public void setRightDisplacement(int pos) {
         rightMain.getSensorCollection().setQuadraturePosition(pos, 0);
     }
+
+    public void followPathCommand() {
+        
+    }
 }
