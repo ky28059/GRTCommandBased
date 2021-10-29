@@ -14,53 +14,55 @@ import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 
-/** Add your docs here. */
+/**
+ * Add your docs here.
+ */
 public class ElevatorSubsystem extends SubsystemBase {
-  private TalonSRX mainMotor;
-  private TalonSRX followMotor;
-  
-  // limit switch variables
-  DigitalInput topLimitSwitch;
-  DigitalInput bottomLimitSwitch;
+    private TalonSRX mainMotor;
+    private TalonSRX followMotor;
 
-  public ElevatorSubsystem(int mainId, int followId) {
-  
-    CommandScheduler.getInstance().registerSubsystem(this);
+    // limit switch variables
+    DigitalInput topLimitSwitch;
+    DigitalInput bottomLimitSwitch;
 
-    //motor config??
-    mainMotor = new TalonSRX(mainId);   
-    mainMotor.setNeutralMode(NeutralMode.Brake);
-    mainMotor.setInverted(true);
+    public ElevatorSubsystem(int mainId, int followId) {
 
-    followMotor = new TalonSRX(followId);
-    followMotor.setNeutralMode(NeutralMode.Brake);
-    followMotor.follow(mainMotor);
-    followMotor.setInverted(InvertType.FollowMaster);
+        CommandScheduler.getInstance().registerSubsystem(this);
 
-    //limit switch config
-    topLimitSwitch = new DigitalInput(0);
-    bottomLimitSwitch = new DigitalInput(1);
-  }
+        //motor config??
+        mainMotor = new TalonSRX(mainId);
+        mainMotor.setNeutralMode(NeutralMode.Brake);
+        mainMotor.setInverted(true);
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+        followMotor = new TalonSRX(followId);
+        followMotor.setNeutralMode(NeutralMode.Brake);
+        followMotor.follow(mainMotor);
+        followMotor.setInverted(InvertType.FollowMaster);
 
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
-  }
+        //limit switch config
+        topLimitSwitch = new DigitalInput(0);
+        bottomLimitSwitch = new DigitalInput(1);
+    }
 
-  public void elevatorDownCommand() {
-    mainMotor.set(ControlMode.PercentOutput,-1);
-  }
-  
-  public void elevatorUpCommand() {
-    mainMotor.set(ControlMode.PercentOutput,1);
-  }
+    @Override
+    public void periodic() {
+        // This method will be called once per scheduler run
+    }
 
-  public void elevatorStopCommand(){
-    mainMotor.set(ControlMode.PercentOutput, 0);
-  }
+    @Override
+    public void simulationPeriodic() {
+        // This method will be called once per scheduler run during simulation
+    }
+
+    public void elevatorDownCommand() {
+        mainMotor.set(ControlMode.PercentOutput, -1);
+    }
+
+    public void elevatorUpCommand() {
+        mainMotor.set(ControlMode.PercentOutput, 1);
+    }
+
+    public void elevatorStopCommand() {
+        mainMotor.set(ControlMode.PercentOutput, 0);
+    }
 }

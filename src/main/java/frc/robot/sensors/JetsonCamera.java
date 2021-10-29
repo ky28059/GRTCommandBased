@@ -24,7 +24,7 @@ public class JetsonCamera implements Runnable {
     /**
      * Establish a connection with the Jetson and start polling data on a new
      * thread.
-     * 
+     *
      * @param port
      */
     public JetsonCamera(String host, int port) {
@@ -82,7 +82,7 @@ public class JetsonCamera implements Runnable {
 
     /**
      * Connect to the Jetson camera.
-     * 
+     *
      * @return true if the connection was successful, false if not.
      */
     private boolean connect() {
@@ -104,10 +104,11 @@ public class JetsonCamera implements Runnable {
     }
 
     // TODO figure out why positive is to the left?????
+
     /**
      * Get the last retrieved calculated azimuth (angle to target) in degrees, where
      * positive is to the left
-     * 
+     *
      * @return
      */
     public double getAzimuth() {
@@ -116,7 +117,7 @@ public class JetsonCamera implements Runnable {
 
     /**
      * Get the last retrieved calculated range (distance to target), in inches
-     * 
+     *
      * @return
      */
     public double getRange() {
@@ -125,7 +126,7 @@ public class JetsonCamera implements Runnable {
 
     /**
      * TODO: figure out what 'x' even means
-     * 
+     *
      * @return
      */
     public double getX() {
@@ -134,7 +135,7 @@ public class JetsonCamera implements Runnable {
 
     /**
      * TODO: figure out what 'y' even means
-     * 
+     *
      * @return
      */
     public double getY() {
