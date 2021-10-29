@@ -1,3 +1,6 @@
 forward 3s
-turn 30
+turn right 30
 forward 2m
+turn left 120
+backward 4m
+backward 2s

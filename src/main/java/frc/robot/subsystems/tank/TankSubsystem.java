@@ -33,7 +33,6 @@ public class TankSubsystem extends SubsystemBase {
         rightMain.setInverted(true);
         rightMain.setNeutralMode(NeutralMode.Brake);
 
-
         rightFollow = new TalonSRX(bRightId);
         rightFollow.follow(rightMain);
         rightFollow.setInverted(InvertType.FollowMaster);
@@ -63,6 +62,7 @@ public class TankSubsystem extends SubsystemBase {
     }
 
     public void setDrivePowers(double yScale, double angularScale, boolean squareInput) {
+        System.out.println("Set drive powers with yScale = " + yScale + " and angularScale = " + angularScale);
 
         // Square the input if needed for finer control
         if (squareInput) {

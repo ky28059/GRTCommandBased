@@ -47,7 +47,8 @@ public class DriveTankCommand extends CommandBase {
         return true;
     }
 
-    public void end() {
+    @Override
+    public void end(boolean interrupted) {
         tankSubsystem.setDrivePowers(0, 0, false);
     }
 }
